@@ -1,0 +1,26 @@
+.light {
+  background-color: rgb(255, 171, 255);
+  color: purple;
+}
+
+.dark {
+  background-color: purple;
+  color: rgb(255, 171, 255);
+}
+
+.buttonLight{
+  background-color: purple;
+  color: rgb(255, 171, 255);;
+}
+
+.buttonDark{
+  background-color: rgb(255, 171, 255);
+  color: purple;
+}
+
+button{
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  border-radius: 30px;
+}

@@ -1,0 +1,25 @@
+#repo-overall{
+    width: 95%;
+    margin: auto;
+}
+
+#repo-list-overall{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+    justify-content: center;
+    /* width: 20%; */
+}
+
+#repo-container{
+    width: 20%;
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+#link-tag{
+    color: white;
+}

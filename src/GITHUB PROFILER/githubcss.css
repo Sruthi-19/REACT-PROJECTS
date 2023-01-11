@@ -1,0 +1,49 @@
+
+#h1{
+    margin: 0%;
+    padding-top: 10px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+#home-page{
+    text-align: center;
+    margin-top: 18%;
+}
+
+#profile-repo-list{
+    row-gap: 30px;
+    justify-content: center; 
+}
+
+#profile-repo-sub1{
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-bottom: 20px;
+}
+
+#profile-repo-sub2{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 10px;
+    row-gap: 20px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+#profile-container{
+    padding-bottom: 20px;
+    
+}
+
+#repo-item{
+    padding: 10px;
+    background-color: rgb(176, 164, 164);
+    text-align: center;
+    margin: auto;
+    color: black;
+}
