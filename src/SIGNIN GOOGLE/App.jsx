@@ -1,9 +1,11 @@
 import { createContext, useMemo, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AuthContext } from "./AuthContext";
+import { AuthContext } from "./Firebase";
+import { SignOut } from "./Firebase";
 import { auth } from "./Firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
+import Home from "./Home";
 import Login from "./Login";
 import Welcome from "./Welcome";
 
@@ -13,11 +15,11 @@ const ProviderElem = ContextElem.Provider;
 function App() {
   const [user] = useAuthState(auth);
   const [isClick, setIsClick] = useState(false);
-  console.log(user);
+  console.log("user", user);
 
-  const handleGoogleSignIn = async () => {
+  const handleGoogleLogin = async () => {
     const result = await AuthContext();
-    setIsClick(true);
+    setIsClick(!isClick);
     if (result) {
       console.log("login");
     } else {
@@ -25,15 +27,18 @@ function App() {
     }
   };
 
-//   const clickMemo=useMemo(()=>{
-//     con
-//   },[isClick])
+  const handleGoogleLogout = () => {
+    SignOut();
+  };
 
   return (
-    <ProviderElem value={{ handleGoogleSignIn, user ,isClick}}>
+    <ProviderElem
+      value={{ handleGoogleLogin, handleGoogleLogout, user, isClick }}
+    >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </BrowserRouter>

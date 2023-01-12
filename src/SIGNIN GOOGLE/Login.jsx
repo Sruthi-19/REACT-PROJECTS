@@ -1,28 +1,30 @@
 import React, { useContext, useEffect } from "react";
+import "./Firebase.css";
 import { ContextElem } from "./App";
+import { Link } from "react-router-dom";
 import Welcome from "./Welcome";
 
-const Signin = () => {
-  const { handleGoogleSignIn } = useContext(ContextElem);
+const Login = () => {
+  const { handleGoogleLogin } = useContext(ContextElem);
   const { user } = useContext(ContextElem);
-  const {isClick}=useContext(ContextElem);
 
   return (
     <>
-      {user && isClick ? (
+      {user ? (
         <>
           <Welcome />
         </>
       ) : (
-        <div>
-          <h1>Sign in</h1>
-          <div>
-            <button onClick={handleGoogleSignIn}>Sign In</button>
-          </div>
+        <div id="login-page">
+          <h1>You need to login first</h1>
+          
+          <Link to="/welcome">
+            <button onClick={handleGoogleLogin}>Login</button>
+          </Link>
         </div>
       )}
     </>
   );
 };
 
-export default Signin;
+export default Login;
