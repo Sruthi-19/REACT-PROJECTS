@@ -1,12 +1,37 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import "./index.css";
+// import { BrowserRouter } from "react-router-dom";
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// import "./index.css";
+// import { StyleComp } from "./STYLED COMPONENTS/Style";
 
+//SAGA
+// import ProductComp from "./SAGA/Products.Layout";
+// import { Provider } from "react-redux";
+// import { sagaStore } from "./root redux/Store";
+
+//REDUX CALCULATOR
+// import Calcuator from "./Calculator/Calculator.Layout";
+// import { Provider } from "react-redux";
+// import { reduxStore } from "./REDUX/store";
+
+//REDUX SAGA
+// import Home from "./REDUX SAGA/Home";
+// import {sagaStore} from "./root redux/Store"
+// import { Provider } from "react-redux";
+
+//REDUX CART
+import Home from "./REDUX CART/Home";
+import { Provider } from "react-redux";
+import { store } from "./REDUX CART/store";
+
+//REDUX
+// import { store } from "./REDUX/store";
+// import { Provider } from "react-redux";
+// import Comp1 from "./REDUX/Comp1";
 
 //STYLED COMPONENT
-import StyledComponent1 from "./STYLED COMPONENTS/StyledComponent1";
+// import StyledComponent1 from "./STYLED COMPONENTS/StyledComponent1";
 
 //USETRANSITION
 // import Transition from "./TRANSITION USEID/Transition";
@@ -33,7 +58,6 @@ import StyledComponent1 from "./STYLED COMPONENTS/StyledComponent1";
 // import Home from "./CASE SENSITIVE/Home";
 // import About from "./CASE SENSITIVE/About";
 
-
 //GITHUB
 // import Home from "./FINAL GITHUB PROFILER/Home";
 // import Dashboard from "./FINAL GITHUB PROFILER/Dashboard";
@@ -42,75 +66,85 @@ import StyledComponent1 from "./STYLED COMPONENTS/StyledComponent1";
 
 // const router = createBrowserRouter([
 
-  //CONTEXT 
-  // {
-  //   path:"/",
-  //   element:<Acomp/>
-  // }
+//CONTEXT
+// {
+//   path:"/",
+//   element:<Acomp/>
+// }
 
-  //SEARCH QUERY PARAMS
-  // {
-  //   path: "/",
-  //   element: <SearchQueryParams />,
-  // },
+//SEARCH QUERY PARAMS
+// {
+//   path: "/",
+//   element: <SearchQueryParams />,
+// },
 
+//MULTI RENDER
+// {
+//   path: "/",
+//   element: <MultiRender />,
+//   loader: () => {
+//     const profile = fetch(
+//       "https://jsonplaceholder.typicode.com/users/2"
+//     );
+//     return profile;
+//   },
+// },
 
-  //MULTI RENDER
-  // {
-  //   path: "/",
-  //   element: <MultiRender />,
-  //   loader: () => {
-  //     const profile = fetch(
-  //       "https://jsonplaceholder.typicode.com/users/2"
-  //     );
-  //     return profile;
-  //   },
-  // },
+//CASE SENSITIVE
+// {
+//   path:"/",
+//   element:<Home/>
+// },
+// {
+//   path:"/about",
+//   caseSensitive: true,
+//   element:<About/>
+// },
 
-  //CASE SENSITIVE
-  // {
-  //   path:"/",
-  //   element:<Home/>
-  // },
-  // {
-  //   path:"/about",
-  //   caseSensitive: true,
-  //   element:<About/>
-  // },
+//GITHUB
+// {
+//   path:"/",
+//   element:<Home/>
+// },
+// {
+//   path:"dashboard/:username",
+//   caseSensitive: true,
+//   element:<Dashboard/>
+// },
+// {
+//   path:"followers/:username",
+//   caseSensitive: true,
+//   element:<Followers/>
+// },
+// {
+//   path:"repos/:username/:reponame",
+//   caseSensitive: true,
+//   element:<RepoDescription/>
+// },
 
-  //GITHUB
-  // {
-  //   path:"/",
-  //   element:<Home/>
-  // },
-  // {
-  //   path:"dashboard/:username",
-  //   caseSensitive: true,
-  //   element:<Dashboard/>
-  // },
-  // {
-  //   path:"followers/:username",
-  //   caseSensitive: true,
-  //   element:<Followers/>
-  // },
-  // {
-  //   path:"repos/:username/:reponame",
-  //   caseSensitive: true,
-  //   element:<RepoDescription/>
-  // },
-  
 // ]);
 
 // ReactDOM.createRoot(document.getElementById("root")).render(
 //   <RouterProvider router={router} />
 // );
 
-
 // DARK LIGHT THEME //SIGN IN WITH GOOGLE //TRANSITION
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <BrowserRouter>
-    // <App />
-    // <UseIdExample/>
-    <StyledComponent1/>
+  // <App />
+  // <UseIdExample/>
+  // <StyledComponent1/>
+  // <StyleComp/>
+  <Provider store={store}>
+    {/* // <Comp1 /> */}
+    <Home />
+  </Provider>
+  // <Home />
+  // <Provider store={reduxStore}>
+  //   <Calcuator />
+  // </Provider>
+  // <Provider store={sagaStore}>
+  //   <ProductComp />
+  // </Provider>
   // </BrowserRouter>
-)
+);
