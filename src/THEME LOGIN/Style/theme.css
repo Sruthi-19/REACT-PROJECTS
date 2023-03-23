@@ -1,0 +1,31 @@
+.light {
+  background-color: rgb(228, 228, 228);
+  border: 1px solid black;
+}
+
+.dark {
+  background-color: rgb(0, 0, 0);
+  border: 1px solid white;
+  color: white;
+}
+
+.dark button{
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.dark input{
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+div {
+  padding: 20px;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  outline: none;
+}

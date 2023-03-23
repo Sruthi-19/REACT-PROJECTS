@@ -5,6 +5,12 @@ import ReactDOM from "react-dom/client";
 // import "./index.css";
 // import { StyleComp } from "./STYLED COMPONENTS/Style";
 
+//THEME LOGIN
+import { App } from "./THEME LOGIN/App";
+
+//LAZY LOADING
+// import App from "./LAZY LOAD/App";
+
 //SAGA
 // import ProductComp from "./SAGA/Products.Layout";
 // import { Provider } from "react-redux";
@@ -21,9 +27,9 @@ import ReactDOM from "react-dom/client";
 // import { Provider } from "react-redux";
 
 //REDUX CART
-import Home from "./REDUX CART/Home";
-import { Provider } from "react-redux";
-import { store } from "./REDUX CART/store";
+// import Home from "./REDUX CART/Home";
+// import Home from "./REDUX CART copy/Home";
+// import { store } from "./REDUX CART copy/store";
 
 //REDUX
 // import { store } from "./REDUX/store";
@@ -135,10 +141,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   // <UseIdExample/>
   // <StyledComponent1/>
   // <StyleComp/>
-  <Provider store={store}>
-    {/* // <Comp1 /> */}
-    <Home />
-  </Provider>
+  // <Provider store={store}>
+  // {/* // // <Comp1 /> */}
+  // <Home />
+  // </Provider>
   // <Home />
   // <Provider store={reduxStore}>
   //   <Calcuator />
@@ -146,5 +152,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   // <Provider store={sagaStore}>
   //   <ProductComp />
   // </Provider>
+  <App />
   // </BrowserRouter>
 );

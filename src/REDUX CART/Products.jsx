@@ -2,9 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addItem } from "./slice";
-import { addWish } from "./slice1";
-
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import { Box } from "@mui/system";
@@ -21,22 +18,26 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 
+import { fetchProducts, addItem } from "./Products.Slice";
+
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const dispatch = useDispatch();
   const [wishToggle, setWishToggle] = useState({});
+  const dispatch = useDispatch();
+  const productsState = useSelector((state) => state.products.productArray);
+  const cartState = useSelector((state) => state.products.cartArray);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    dispatch(fetchProducts());
   }, []);
+
+  // console.log("productsArray", productsState);
+  // console.log("cartArray", cartState);
 
   return (
     <>
       <h1 style={{ textAlign: "center", marginBottom: "20px" }}>Products</h1>
       <div style={{ display: "flex", flexDirection: "column", rowGap: "15px" }}>
-        {products.map((item, index) => {
+        {productsState.map((item, index) => {
           return (
             <div key={index}>
               <Card>
@@ -81,17 +82,21 @@ const Products = () => {
                       </IconButton>
                       <IconButton
                         title="Add to wishlist"
-                        onClick={() => {
-                          setWishToggle((prev) => {
-                            return {
-                              ...prev,
-                              [item.title]: !wishToggle[item.title],
-                            };
-                          });
-                          dispatch(addWish(item.title));
-                        }}
+                        // onClick={() => {
+                        //   setWishToggle((prev) => {
+                        //     return {
+                        //       ...prev,
+                        //       [item.title]: !wishToggle[item.title],
+                        //     };
+                        //   });
+                        //   dispatch(addWish(item.title));
+                        // }}
                       >
-                        {wishToggle[item.title] ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+                        {wishToggle[item.title] ? (
+                          <BookmarkIcon />
+                        ) : (
+                          <BookmarkBorderIcon />
+                        )}
                         {/* <BookmarkBorderIcon /> */}
                       </IconButton>
                     </Box>

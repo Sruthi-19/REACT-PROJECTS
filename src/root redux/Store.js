@@ -1,13 +1,13 @@
 import createSagaMiddleware from "@redux-saga/core";
 import { configureStore } from "@reduxjs/toolkit";
 import RootSaga from "./RootSaga";
-import ProductSlice from "../SAGA/Products.Slice";
+import ProductsSlice from "../REDUX CART/Products.Slice";
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const sagaStore = configureStore({
   reducer: {
-    products: ProductSlice,
+    products: ProductsSlice,
   },
   middleware: (currentMiddleware) => [
     ...currentMiddleware({ thunk: false }),

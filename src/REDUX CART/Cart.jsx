@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addItem, removeItem, clearCart } from "./slice";
 import { Box } from "@mui/system";
 import {
   Button,
@@ -23,20 +22,20 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
-const Cart = () => {
-  const cartItems1 = useSelector((state) => state.cart.cartItems);
-  const itemCount1 = useSelector((state) => state.cart.itemCount);
-  const price1 = useSelector((state) => state.cart.price);
-  const subTotal1 = useSelector((state) => state.cart.subTotal);
+import { addItem,removeItem } from "./Products.Slice";
 
-  const wishItems1 = useSelector((state) => state.wish.wishItems);
+const Cart = () => {
+  const cartState = useSelector((state) => state.products.cartArray);
+  const countState = useSelector((state) => state.products.itemCount);
+  const priceState = useSelector((state) => state.products.price);
+  const subTotalState = useSelector((state) => state.products.subTotal);
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
 
-  console.log("wish", wishItems1);
+ 
 
   return (
     <>
@@ -57,7 +56,7 @@ const Cart = () => {
         </Button>
       </div>
 
-      {cartItems1.length > 0 ? (
+      {cartState.length > 0 ? (
         <TableContainer sx={{ backgroundColor: "whitesmoke" }}>
           <Table>
             <TableHead>
@@ -69,7 +68,7 @@ const Cart = () => {
               </TableRow>
             </TableHead>
 
-            {cartItems1.map((item, index) => {
+            {cartState.map((item, index) => {
               return (
                 <TableBody>
                   <TableRow>
@@ -78,7 +77,7 @@ const Cart = () => {
                       <IconButton onClick={() => dispatch(addItem(item))}>
                         <AddIcon />
                       </IconButton>
-                      {itemCount1[item.title]}
+                      {countState[item.title]}
                       <IconButton onClick={() => dispatch(removeItem(item))}>
                         <RemoveIcon />
                       </IconButton>
@@ -86,7 +85,7 @@ const Cart = () => {
                     <TableCell>{item.price}</TableCell>
                     <TableCell>
                       <Box sx={{ display: "flex", alignItems: "center" }}>
-                        {subTotal1[item.title]}
+                        {subTotalState[item.title]}
                         <IconButton onClick={() => setOpen1(true)}>
                           <RemoveShoppingCartIcon />
                         </IconButton>
@@ -98,7 +97,7 @@ const Cart = () => {
             })}
             <TableFooter>
               <TableCell>
-                <h3>TOTAL PRICE Rs.{price1}</h3>
+                <h3>TOTAL PRICE Rs.{priceState}</h3>
               </TableCell>
             </TableFooter>
           </Table>
@@ -106,79 +105,6 @@ const Cart = () => {
       ) : (
         <></>
       )}
-
-      {/* MODAL FOR WISHLIST */}
-      <Dialog open={modalOpen}>
-        {wishItems1.length > 0 ? (
-          <>
-            <DialogTitle>Wish List Items</DialogTitle>
-            {wishItems1.map((item) => {
-              return (
-                <>
-                  <DialogContent>{item}</DialogContent>
-                </>
-              );
-            })}
-            <Button onClick={() => setModalOpen(false)}>CLOSE</Button>
-          </>
-        ) : (
-          <>
-            <h1>HI</h1>
-          </>
-        )}
-      </Dialog>
-      {/* CART CLEAR DIALOG */}
-      <Dialog open={open}>
-        {cartItems1.length > 0 ? (
-          <>
-            <DialogTitle>Do you want to clear the cart?</DialogTitle>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-evenly",
-                paddingBottom: "10px",
-              }}
-            >
-              <Button
-                variant="contained"
-                onClick={() => {
-                  dispatch(clearCart());
-                  setOpen(false);
-                }}
-              >
-                Yes
-              </Button>
-              <Button variant="contained" onClick={() => setOpen(false)}>
-                No
-              </Button>
-            </Box>
-          </>
-        ) : (
-          <Box sx={{ padding: "10px", textAlign: "center" }}>
-            <DialogTitle>No items in cart</DialogTitle>
-            <Button variant="contained" onClick={() => setOpen(false)}>
-              Add
-            </Button>
-          </Box>
-        )}
-      </Dialog>
-
-      {/* REMOVE DIALOG */}
-      <Dialog open={open1}>
-        <DialogTitle>Do you want to remove the item entirely</DialogTitle>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-evenly",
-            paddingBottom: "10px",
-          }}
-        >
-          <Button variant="contained">Yes</Button>
-          <Button variant="contained" onClick={() => setOpen1(false)}>
-            No
-          </Button>
-        </Box>
-      </Dialog>
     </>
   );
 };

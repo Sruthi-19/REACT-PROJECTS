@@ -1,0 +1,1 @@
+Objective : Dark and Light Mode TogglerCreate a Register Form & Login Form with Resuable components in seperate Routes.Create a Component that takes input to toggles between dark and light mode. (use hooks)When you toggle between dark and light mode, the theme must change accordingly (including the reused components in the page)
